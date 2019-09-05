@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">  
   </head>
   <body id="page-top">
-    <p>Username: <%= @user.username %></p>
-    <p>Balance: <%= @user.balance %></p>
+    <% if Helpers.is_logged_in? %>
+      <p>Username: <%= @user.username %></p>
+      <p>Balance: <%= @user.balance %></p>
+    <% else redirect '/error' %>
+    <% end %>
     <a href="/logout">Log Out</a>
   </body>
 </html>
